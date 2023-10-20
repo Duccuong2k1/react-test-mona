@@ -34,9 +34,13 @@ export function HomeFilter({}: Props) {
           labelPlacement="outside"
           disableSelectorIconRotation
           defaultSelectedKeys={["1"]}
-          className=" bg-white max-w-[220px] shadow-none text-sm"
+          className=" max-w-[220px] shadow-none text-sm"
           selectorIcon={<AiOutlineCaretDown className="bg-primary " />}
-          style={{ background: "#fff" }}
+          classNames={{
+            listboxWrapper:"bg-white",
+          trigger: "h-10",
+
+          }}
         >
           {[
             { value: "1", label: "02 Adult, 01 children" },
@@ -57,7 +61,12 @@ export function HomeFilter({}: Props) {
           labelPlacement="outside"
           selectorIcon={<AiOutlineCaretDown className="text-primary" />}
           disableSelectorIconRotation
-          className=" bg-white max-w-[220px] shadow-none text-sm"
+          className=" max-w-[220px] shadow-none text-sm"
+          classNames={{
+            listboxWrapper:"bg-white",
+          trigger: "h-10",
+
+          }}
         >
           {[
             { value: "Business", label: "Business Class" },
@@ -80,7 +89,7 @@ export function HomeFilter({}: Props) {
           <div className="text-sm text-black font-semibold">
             Quang Nam, Viet Nam
           </div>
-        <span className="bg-white rounded-full p-3 flex  absolute -right-[30px] z-30 top-9"><i><FaArrowRightArrowLeft/></i></span>
+        <span className="bg-white rounded-full p-3 flex  absolute -right-[30px] top-9"><i><FaArrowRightArrowLeft/></i></span>
         </div>
         <div className="border bg-white border-gray-100 rounded-xl py-[15px] pl-10 pr-5 box-place-to">
           <div className="uppercase text-xs text-black opacity-50">To</div>
