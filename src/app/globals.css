@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,600;1,700&family=Roboto:wght@300;400;500;700;900&display=swap");
+
+:root {
+}
+
+body {
+  background: #f4f2f9;
+  font-family: "Arimo", sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+@font-face {
+  font-family: 'YourFont';
+  src: url('/fonts/Fontspring-biennale-black.otf') format('otf');
+
+}
+.box-place-from{
+  position: relative;
+}
+.box-place-from:hover{
+ border: 1px solid #008bfd
+}
+.box-place-from:hover::after{
+  border-top: 1px solid #008bfd;
+  border-bottom: 1px solid #008bfd;
+  border-left: 1px solid #008bfd;
+}
+.box-place-from::after{
+  content: '';
+  position: absolute;
+  top: 30px;
+  right: -1px;
+  height: 55px;
+  width: 25px;
+  background: #ffffff;
+  border-radius: 100px 0px 0px 100px;
+  border-top: 1px solid rgba(0, 0, 0, 0.10);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+  border-left: 1px solid rgba(0, 0, 0, 0.10);
+  z-index: 10;
+
+}
+.box-place-to{
+  position: relative;
+}
+.box-place-to:hover{
+ border: 1px solid #008bfd
+}
+.box-place-to:hover::after{
+  border-top: 1px solid #008bfd;
+  border-bottom: 1px solid #008bfd;
+  border-right: 1px solid #008bfd;
+}
+.box-place-to::after{
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: -1px;
+  height: 55px;
+  width: 25px;
+  background: #ffffff;
+  border-radius: 0px 100px 100px 0px;
+  border-top: 1px solid rgba(0, 0, 0, 0.10);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+  border-right: 1px solid rgba(0, 0, 0, 0.10);
+  z-index: 10;
+
+}
