@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { AiOutlineCaretDown } from "react-icons/ai";
 type Props = {};
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
 import { CgCalendarDates } from "react-icons/cg";
 import { Button } from "../shared/utilis/forms/Button";
 import { BsArrowRight } from "react-icons/bs";
@@ -144,7 +144,7 @@ function BoxSelectedDate({
           selected={selectedDate}
           onChange={(date: any) => setSelectedDate(date)}
           dateFormat="EEE, dd MMM, yyyy"
-          className="text-2xl text-primary font-semibold w-[200px]"
+          className="text-2xl text-primary font-semibold w-[230px] focus-within:border-none focus:border-none border-none"
         />
         <i className="text-2xl text-primary">
           <CgCalendarDates />
