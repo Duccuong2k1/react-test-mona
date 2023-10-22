@@ -3,14 +3,17 @@ import React from "react";
 import { BsDot } from "react-icons/bs";
 
 interface BoxFlightNameProps {
-  flight: any;
+  flightName: string;
+  flightNumber:string;
+  plane:string
 }
 
-export function BoxFlightName({ flight }: BoxFlightNameProps) {
+
+export function BoxFlightName({ flightName,flightNumber,plane }: BoxFlightNameProps) {
   return (
     <div className="flex flex-row items-center justify-start gap-2">
       <Image
-        src={flight?.img || "/img/icon-flight.png"}
+        src={"/img/icon-flight.png"}
         alt=""
         width={30}
         height={30}
@@ -18,13 +21,13 @@ export function BoxFlightName({ flight }: BoxFlightNameProps) {
         loading="lazy"
       />
       <div>
-        <div className="font-semibold text-sm uppercase">{flight?.name}</div>
+        <div className="font-semibold text-sm uppercase">{flightName}</div>
         <div className="font-light text-xs  flex flex-row items-center justify-start gap-1">
-          <span>QH-183</span>
+          <span>{flightNumber}</span>
           <i className="text-xl">
             <BsDot />
           </i>{" "}
-          <span>Economy</span>
+          <span>{plane}</span>
         </div>
       </div>
     </div>

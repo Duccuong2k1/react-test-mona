@@ -1,6 +1,5 @@
 "use client";
 import { Radio, RadioGroup, Select, SelectItem } from "@nextui-org/react";
-import { addDays } from "date-fns";
 import React, { useState } from "react";
 import { AiOutlineCaretDown } from "react-icons/ai";
 type Props = {};
@@ -13,7 +12,8 @@ import { FaArrowRightArrowLeft } from "react-icons/fa6";
 
 export function HomeFilter({}: Props) {
   const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(addDays(new Date(), 1));
+  
+  const [endDate, setEndDate] = useState(new Date());
   return (
     <div
       className="container bg-white rounded-xl p-[30px] absolute -bottom-12 left-1/2 -translate-x-1/2 w-full  right-0 transform"

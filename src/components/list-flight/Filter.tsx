@@ -6,9 +6,11 @@ type Props = {};
 
 export function Filter({}: Props) {
   return (
-    <div className="flex flex-row items-center justify-end gap-2">
+    <div className="flex sm:flex-row flex-wrap  items-center justify-end gap-2">
       <div className="text-gray-400 font-semibold uppercase">Filter</div>
       <Select
+
+      aria-labelledby="transit"
         items={animals}
         className="rounded-xl"
         labelPlacement="outside"
@@ -26,6 +28,7 @@ export function Filter({}: Props) {
         )}
       </Select>
       <Select
+      aria-labelledby="time"
         items={animals}
         className="rounded-xl"
         labelPlacement="outside"
@@ -43,6 +46,7 @@ export function Filter({}: Props) {
         )}
       </Select>
         <Select
+        aria-labelledby="Airline"
             items={animals}
             className="rounded-xl"
             labelPlacement="outside"
@@ -60,6 +64,7 @@ export function Filter({}: Props) {
             )}
         </Select>
         <Select
+        aria-labelledby="Low-price"
             items={animals}
             className="rounded-xl"
             labelPlacement="outside"

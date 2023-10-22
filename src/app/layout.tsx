@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/footer";
 import { NextUIProviders } from "@/lib/providers/nextui-proivder";
+import { DefaultProvider } from "@/lib/providers/default-provider";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +22,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextUIProviders>
-          <div className="min-h-screen ">{children}</div>
-          <Footer />
+          <DefaultProvider>
+            <div className="min-h-screen ">
+              {children}
+             
+            </div>
+            <Footer />
+          </DefaultProvider>
         </NextUIProviders>
       </body>
     </html>

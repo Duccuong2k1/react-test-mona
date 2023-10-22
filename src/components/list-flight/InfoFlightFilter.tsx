@@ -7,8 +7,8 @@ type Props = {};
 export function InfoFlightFilter({}: Props) {
   return (
     <section className=" bg-white">
-      <div className="flex flex-row items-center justify-between py-[19px] container">
-        <div className="flex flex-row  items-center justify-between gap-5">
+      <div className="flex flex-row flex-wrap gap-3 items-center justify-between py-[19px] container">
+        <div className="flex flex-row  items-center justify-between gap-8">
           <InfoPlaceItem title=" Da Nang (DAD)" date=" Fri, 22 Mar, 2022" />
 
           <i className="text-gray-300 text-xl">

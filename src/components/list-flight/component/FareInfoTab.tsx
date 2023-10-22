@@ -2,27 +2,43 @@ import React from "react";
 import { BoxFlightName } from "./BoxFlightName";
 import { ProgressVertical } from "@/components/shared/common/Progress";
 import { TitlePriceRow } from "./TitlePriceRow";
+import { parseNumber } from "@/lib/helpers/parser";
 
-type Props = {};
+interface FareInfoTabProps {
+  fareFlight: any;
+}
 
-export function FareInfoTab({}: Props) {
+export function FareInfoTab({ fareFlight }: FareInfoTabProps) {
   return (
-    <div className="flex flex-row justify-start py-4 gap-28">
+    <div className="flex md:flex-row flex-col justify-start py-4 gap-5 md:gap-28">
       <div>
         <div className="text-sm uppercase font-semibold mb-[15px]">
           Conditions
         </div>
-        <BoxFlightName flight={{ name: "Bamboo Airways" }} />
+        <BoxFlightName
+          flightName={fareFlight?.AirlineCode}
+          flightNumber={fareFlight?.FlightNumber}
+          plane={fareFlight?.Plane}
+        />
         <div className="flex flex-row items-center justify-start gap-3 mt-[10px]">
           <div>
-            <div className="text-sm font-normal text-black">Da Nang</div>
-            <div className="text-xs font-normal text-primary">Economy</div>
+            <div className="text-sm font-normal text-black">
+              {" "}
+              {fareFlight?.StartPoint}
+            </div>
+            <div className="text-xs font-normal text-primary">
+              {" "}
+              {fareFlight?.FareClass}
+            </div>
           </div>
           <ProgressVertical />
-          <div className="text-sm font-normal text-black">Ho Chi Minh City</div>
+          <div className="text-sm font-normal text-black">
+            {" "}
+            {fareFlight?.EndPoint}
+          </div>
         </div>
         <div className="text-xs font-normal text-black mt-[15px]">
-          Non - Refundable
+          {fareFlight?.NoRefund ? "Non - Refundable" : "Refundable"}
         </div>
       </div>
       <div className="lg:w-2/5 w-full">
@@ -33,20 +49,20 @@ export function FareInfoTab({}: Props) {
         <TitlePriceRow
           label="Adult Basic Fare (x1)"
           classValue="font-semibold"
-          value={" 1,326,000 vnd"}
+          value={parseNumber(fareFlight?.PriceAdult)}
         />
-        <TitlePriceRow label="Tax" value={"included"} />
-        <TitlePriceRow label="Regular Total Price" value={"1,326,000 vnd"} />
+        <TitlePriceRow label="Tax" value={parseNumber(fareFlight?.TaxAdult)} />
+        <TitlePriceRow label="Regular Total Price" value={parseNumber(fareFlight?.ChargeAdult)} />
         <TitlePriceRow
           label="Save"
-          classLabel="text-accent"
-          value={"-4,000 vnd"}
+          classLabel="!text-accent"
+          value={fareFlight?.Promo ? "-4,000 vnd" : "0 vnd"}
         />
         <hr className="w-full py-1" />
         <TitlePriceRow
           label="You pay"
-          value={"1,322,000 vnd"}
-          classValue="font-semibold text-accent"
+          value={parseNumber(fareFlight?.PriceAdult)}
+          classValue="font-semibold !text-accent"
         />
       </div>
     </div>

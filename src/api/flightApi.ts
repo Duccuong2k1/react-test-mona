@@ -1,11 +1,11 @@
 import axiosClient from "@/lib/axios/axios-client";
 
 const flightApi =  {
-    getFlights(dataRequest:any) {
+    getFlights(queryRequest:any) {
         return axiosClient.post("/graphql", {
             query: `
                 query {
-                   ${dataRequest}
+                   ${queryRequest}
                 }
             `,
           });
