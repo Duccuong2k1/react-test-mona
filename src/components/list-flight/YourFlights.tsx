@@ -32,7 +32,7 @@ export function YourFlights({}: Props) {
   
 
   return (
-    <div className="bg-white rounded-xl">
+    <div className="bg-white rounded-xl sticky top-3">
       <div className="p-[15px] uppercase text-sm font-semibold">
         your flights
       </div>

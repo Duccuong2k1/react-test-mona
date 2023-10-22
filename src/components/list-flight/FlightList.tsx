@@ -21,7 +21,7 @@ export function FlightList({}: Props) {
           ))}
         </div>
       ) : flights.length === 0 ? (
-        <div className="text-center text-xl text-black font-semibold">
+        <div className="text-center text-xl text-black font-semibold py-4">
           Không có chuyến bay nào!
         </div>
       ) : (
