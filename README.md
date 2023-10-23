@@ -16,7 +16,7 @@ pnpm dev
 bun dev
 ```
 
-https://github.com/Duccuong2k1/test-react-mona
+https://github.com/Duccuong2k1/react-test-mona
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
