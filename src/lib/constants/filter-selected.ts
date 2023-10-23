@@ -5,7 +5,7 @@ interface Options {
 export const TRANSIT: Options[] = [
   {
     value: 0,
-    label: " Dừng 0",
+    label: " Dừng 0 trạm",
   },
   {
     value: 1,

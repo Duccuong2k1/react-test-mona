@@ -3,9 +3,9 @@ import React from "react";
 import { BsDot } from "react-icons/bs";
 
 interface BoxFlightNameProps {
-  flightName: string;
-  flightNumber:string;
-  plane:string
+  flightName?: string;
+  flightNumber?:string;
+  plane?:string
 }
 
 

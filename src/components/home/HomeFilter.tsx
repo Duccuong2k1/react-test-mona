@@ -12,8 +12,24 @@ import { FaArrowRightArrowLeft } from "react-icons/fa6";
 
 export function HomeFilter({}: Props) {
   const [startDate, setStartDate] = useState(new Date());
-  
   const [endDate, setEndDate] = useState(new Date());
+  const [changePlace, setChangePlace] = useState({
+    from: "Da Nang",
+    to: " Ho Chi Minh",
+  });
+  // Vi chưa co thông tin để hiển thi thay đổi nên chỉ viết cố định như trên 
+  const toggleChangePlace = () => {
+    setChangePlace((prevChangePlace) => {
+      if (
+        prevChangePlace.from === "Da Nang" &&
+        prevChangePlace.to === "Ho Chi Minh"
+      ) {
+        return { from: "Ho Chi Minh", to: "Da Nang" };
+      } else {
+        return { from: "Da Nang", to: "Ho Chi Minh" };
+      }
+    });
+  };
   return (
     <div
       className="container bg-white rounded-xl p-[30px] absolute -bottom-12 left-1/2 -translate-x-1/2 w-full  right-0 transform"
@@ -30,6 +46,7 @@ export function HomeFilter({}: Props) {
           <Radio value="Multi-city">Multi-city</Radio>
         </RadioGroup>
         <Select
+          placeholder="Please choose quantity"
           aria-label=""
           labelPlacement="outside"
           disableSelectorIconRotation
@@ -37,9 +54,8 @@ export function HomeFilter({}: Props) {
           className=" max-w-[220px] shadow-none text-sm"
           selectorIcon={<AiOutlineCaretDown className="bg-primary " />}
           classNames={{
-            listboxWrapper:"bg-white",
-          trigger: "h-10",
-
+            listboxWrapper: "bg-white",
+            trigger: "h-10",
           }}
         >
           {[
@@ -57,15 +73,15 @@ export function HomeFilter({}: Props) {
         </Select>
         <Select
           aria-label=""
+          placeholder="Please choose class"
           defaultSelectedKeys={["Business"]}
           labelPlacement="outside"
           selectorIcon={<AiOutlineCaretDown className="text-primary" />}
           disableSelectorIconRotation
           className=" max-w-[220px] shadow-none text-sm"
           classNames={{
-            listboxWrapper:"bg-white",
-          trigger: "h-10",
-
+            listboxWrapper: "bg-white",
+            trigger: "h-10",
           }}
         >
           {[
@@ -82,19 +98,28 @@ export function HomeFilter({}: Props) {
           ))}
         </Select>
       </div>
-      <div className="my-5 grid md:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-5">
+      <div className="my-5 grid md:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-4">
         <div className="border bg-white border-gray-100 rounded-xl py-[15px] px-5 box-place-from ">
           <div className="uppercase text-xs text-black opacity-50">From</div>
-          <div className="text-[27px] font-semibold text-primary">Da nang</div>
+          <div className="text-[27px] font-semibold text-primary">
+            {changePlace?.from}
+          </div>
           <div className="text-sm text-black font-semibold">
             Quang Nam, Viet Nam
           </div>
-        <span className="bg-white rounded-full p-3 flex  absolute -right-[30px] top-9"><i><FaArrowRightArrowLeft/></i></span>
+          <span
+            className="bg-white rounded-full p-3 flex  absolute -right-[30px] top-9 cursor-pointer"
+            onClick={toggleChangePlace}
+          >
+            <i>
+              <FaArrowRightArrowLeft />
+            </i>
+          </span>
         </div>
         <div className="border bg-white border-gray-100 rounded-xl py-[15px] pl-10 pr-5 box-place-to">
           <div className="uppercase text-xs text-black opacity-50">To</div>
           <div className="text-[27px] font-semibold text-primary">
-            Ho Chi Minh
+            {changePlace?.to}
           </div>
           <div className="text-sm text-black font-semibold">Viet Nam</div>
         </div>

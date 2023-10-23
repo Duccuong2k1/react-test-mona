@@ -1,6 +1,7 @@
 "use client";
 import flightApi from "@/api/flightApi";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { Flight } from "../types/Flight";
 
 export const getAllFlight = async (page: number, pageSize = 6) => {
   try {
@@ -69,41 +70,46 @@ export const getAllFlight = async (page: number, pageSize = 6) => {
 
 export const FlightContext = createContext<
   Partial<{
-    flights: any;
+    flights: Flight[];
     loadMore: () => void;
     flightSelected: any;
     setFlightSelected: (selected: any) => any;
     filters: FiltersType;
     setFilters: (filter: any) => any;
+    isLoadFlight:boolean;
+    setIsLoadFlight:(isLoad:boolean)=>void;
   }>
 >({});
 
 interface FiltersType {
   stops?: any;
-  time?: any;
+  time?: { startTime: any; endTime: any };
   airline?: any;
   price?: string;
 }
 
 export function FlightProvider({ ...props }: { children: React.ReactNode }) {
-  const [flights, setFlight] = useState<[] | any>(undefined);
+  const [flights, setFlight] = useState<Flight[] | any>(undefined);
   const [flightSelected, setFlightSelected] = useState<any>(undefined);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoadFlight, setIsLoadFlight] = useState(false);
   const [filters, setFilters] = useState<FiltersType>({
     stops: null,
-    time: null,
+    time: { startTime: null, endTime: null },
     airline: null,
     price: "ASC",
   });
 
   useEffect(() => {
     (async () => {
+      setIsLoadFlight(true)
       try {
         const filteredFlights = await fetchAndFilterFlights(
           currentPage,
           filters
         );
         setFlight(filteredFlights);
+        setIsLoadFlight(false)
       } catch (err) {
         console.log("Get all flights error", err);
       }
@@ -124,7 +130,15 @@ export function FlightProvider({ ...props }: { children: React.ReactNode }) {
         );
       }
 
-      if (filters.time) {
+      if (filters.time?.startTime && filters.time?.endTime) {
+        filteredFlights = filteredFlights.filter((flight: any) => {
+          const StartDate = new Date(flight.StartDate);
+          const EndDate = new Date(flight.EndDate);
+          return (
+            StartDate >= filters.time?.startTime &&
+            EndDate <= filters.time?.endTime
+          );
+        });
       }
 
       if (filters.airline) {
@@ -165,6 +179,7 @@ export function FlightProvider({ ...props }: { children: React.ReactNode }) {
         setFlightSelected,
         filters,
         setFilters,
+        isLoadFlight,
       }}
     >
       {props.children}

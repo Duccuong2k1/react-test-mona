@@ -1,9 +1,13 @@
+"use client"
+import { useDefaultContext } from "@/lib/providers/default-provider";
 import React from "react";
 import { FaFacebookF, FaInstagram, FaPhoneAlt } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 type Props = {};
 
 export function Footer({}: Props) {
+  const {isLoading} = useDefaultContext();
+  if(isLoading) return null
   return (
     <div className="flex flex-col lg:flex-row items-center justify-between container py-5 gap-5 mb-5 mt-10">
       <div className="flex flex-col lg:flex-row lg:items-center justify-start gap-3">

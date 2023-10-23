@@ -1,4 +1,4 @@
-interface Flight {
+export interface Flight {
   AirlineCode?: string;
   Carryon?: string;
   ChargeAdult?: number;
@@ -30,4 +30,29 @@ interface Flight {
   PriceChild?: number;
   PriceInfant?: number;
   Promo?: boolean;
+  RelatedFlights: RelatedFlightsField[];
+  ReturnFlight: boolean;
+  SeatRemain?: number;
+  SessionId?: number;
+  StartDate?: string;
+  StartPoint?: string;
+  StopOvernight?: boolean;
+  Stops?: number;
+  TaxAdult?: number;
+  TaxChild?: number;
+  TaxInfant?: number;
+}
+export interface RelatedFlightsField {
+  AirlineCode?: string;
+  Carryon?: string;
+  Duration?: number;
+  EndPoint?: string;
+  EndTime?: string;
+  FlightNumber?: string;
+  Freebag?: string;
+  Index?: number;
+  Plane?: string;
+  SeatClass?: string;
+  StartPoint?: string;
+  StartTime?: string;
 }

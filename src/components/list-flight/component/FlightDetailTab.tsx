@@ -1,16 +1,15 @@
 import { ProgressHorizontal } from "@/components/shared/common/Progress";
 import { TimeDateInfo } from "@/components/shared/common/TimeInfo";
 import { TitleRow } from "@/components/shared/common/TitleRow";
-import Image from "next/image";
 import React from "react";
-import { BsDot } from "react-icons/bs";
 import { BoxFlightName } from "./BoxFlightName";
 import { convertToHoursMinute } from "@/lib/helpers/convert-time";
 import { formatDate } from "@/lib/helpers/parser";
 import { formatDateMonth } from "@/lib/helpers/formatDateMonth";
+import { Flight } from "@/lib/types/Flight";
 
 interface FlightDetailTabProps {
-  detailFlight: any;
+  detailFlight: Flight;
 }
 
 export function FlightDetailTab({ detailFlight }: FlightDetailTabProps) {

@@ -5,7 +5,19 @@ import { TitlePriceRow } from "./TitlePriceRow";
 import { parseNumber } from "@/lib/helpers/parser";
 
 interface FareInfoTabProps {
-  fareFlight: any;
+  fareFlight: {
+    AirlineCode?:string;
+    FlightNumber?:string;
+    Plane?:string;
+    StartPoint?:string;
+    FareClass?:string;
+    EndPoint?:string;
+    NoRefund?:boolean;
+    PriceAdult?:number;
+    TaxAdult?:number;
+    ChargeAdult?:number;
+    Promo?:boolean;
+  };
 }
 
 export function FareInfoTab({ fareFlight }: FareInfoTabProps) {

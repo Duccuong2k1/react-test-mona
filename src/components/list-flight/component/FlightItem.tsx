@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { ProgressVertical } from "@/components/shared/common/Progress";
 import { TimeInfo } from "@/components/shared/common/TimeInfo";
 import { Button } from "@/components/shared/utilis/forms/Button";
@@ -11,8 +11,9 @@ import { TABS } from "../FlightList";
 import { FlightDetailTab } from "./FlightDetailTab";
 import { FareInfoTab } from "./FareInfoTab";
 import { toast } from "react-toastify";
+import { Flight } from "@/lib/types/Flight";
 
-export function FlightItem({ flight }: { flight: any }) {
+export function FlightItem({ flight }: { flight: Flight }) {
   const { setFlightSelected } = useFlightContext();
 
   return (
@@ -30,16 +31,22 @@ export function FlightItem({ flight }: { flight: any }) {
             {flight?.AirlineCode}
           </div>
         </div>
-        <TimeInfo time={formatDate(flight?.StartDate, "HH:mm")} content="DAS" />
+        <TimeInfo
+          time={formatDate(flight?.StartDate as string, "HH:mm")}
+          content="DAS"
+        />
 
         <div className="flex flex-col items-center text-center gap-1">
           <div className="text-sm font-light text-black">
-            {convertToHoursMinute(flight?.Duration)}
+            {convertToHoursMinute(flight?.Duration as number)}
           </div>
           <ProgressVertical />
           <div className="text-sm font-light text-black">Direct</div>
         </div>
-        <TimeInfo time={formatDate(flight?.EndDate, "HH:mm")} content="DAS" />
+        <TimeInfo
+          time={formatDate(flight?.EndDate as string, "HH:mm")}
+          content="DAS"
+        />
         <div>
           <div className="flex flex-row items-center gap-2 justify-start">
             <Image
@@ -74,11 +81,13 @@ export function FlightItem({ flight }: { flight: any }) {
         </div>
         <Button
           text="Choose"
-          className={"!text-accent bg-[#feefeb] font-semibold hover:bg-[#ffcfc2]"}
+          className={
+            "!text-accent bg-[#feefeb] font-semibold hover:bg-[#ffcfc2]"
+          }
           onClick={() => {
-            setFlightSelected?.(flight)
-            toast.success("Chọn chuyến bay thành công!")
-        }}
+            setFlightSelected?.(flight);
+            toast.success("Chọn chuyến bay thành công!");
+          }}
         />
       </div>
       <DetailTabs flight={flight} />
@@ -86,7 +95,7 @@ export function FlightItem({ flight }: { flight: any }) {
   );
 }
 
-function DetailTabs({ flight }: { flight: any }) {
+function DetailTabs({ flight }: { flight: Flight }) {
   const [tabs, setTabs] = useState(TABS);
   const [tabActive, setTabActive] = useState<string>("");
   return (

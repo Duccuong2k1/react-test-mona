@@ -9,18 +9,18 @@ import { FlightItem } from "./component/FlightItem";
 type Props = {};
 
 export function FlightList({}: Props) {
-  const { flights, loadMore } = useFlightContext();
+  const { flights, loadMore,isLoadFlight } = useFlightContext();
 
   return (
     <section>
       <Filter />
-      {flights === null || flights === undefined ? (
+      {flights === null || flights === undefined || isLoadFlight ? (
         <div className="flex flex-col gap-[10px] mt-1">
           {[1, 2, 3, 4].map((item, idx) => (
             <FlightItemSkeleton key={idx} />
           ))}
         </div>
-      ) : flights.length === 0 ? (
+      ) : flights?.length === 0 ? (
         <div className="text-center text-xl text-black font-semibold py-4">
           Không có chuyến bay nào!
         </div>
