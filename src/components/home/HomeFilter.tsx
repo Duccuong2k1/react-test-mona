@@ -47,7 +47,7 @@ export function HomeFilter({}: Props) {
         </RadioGroup>
         <Select
           placeholder="Please choose quantity"
-          aria-label=""
+          aria-labelledby="quantity"
           labelPlacement="outside"
           disableSelectorIconRotation
           defaultSelectedKeys={["1"]}
@@ -72,7 +72,7 @@ export function HomeFilter({}: Props) {
           ))}
         </Select>
         <Select
-          aria-label=""
+           aria-labelledby="class"
           placeholder="Please choose class"
           defaultSelectedKeys={["Business"]}
           labelPlacement="outside"
