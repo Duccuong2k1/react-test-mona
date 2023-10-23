@@ -1,9 +1,10 @@
 "use client";
 
 import axios from "axios";
+const URI = "https://api-erp.monamedia.net";
 
 const axiosClient = axios.create({
-  baseURL: "https://api-erp.monamedia.net",
+  baseURL:URI,
   headers: {
     "accept": "application/json",
     "Content-Type": "application/json",
